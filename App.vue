@@ -206,6 +206,109 @@ export default {
       context.lineWidth = 1 * this.ratio;
       context.strokeStyle = "black";
     },
+    circle5withStroke1() {
+      var canvas = document.getElementById("myCanvas");
+      var context = canvas.getContext("2d");
+      context.beginPath();
+      context.arc(
+        this.canvasWidth / 2,
+        this.canvasHeight / 2,
+        (112 - 20) * this.ratio,
+        this.startingPos,
+        this.endPos
+      );
+      context.lineWidth = 2;
+      context.strokeStyle = "red";
+      context.stroke();
+      context.closePath();
+
+      context.beginPath();
+      const p0 = {
+        x: 112 * Math.cos(this.endPos) * this.ratio + this.canvasWidth / 2,
+        y: 112 * Math.sin(this.endPos) * this.ratio + this.canvasHeight / 2,
+      };
+      const p1 = {
+        x: 112 * Math.cos(this.endPos) * this.ratio + this.canvasWidth / 2,
+        y: 112 * Math.sin(this.endPos) * this.ratio + this.canvasHeight / 2,
+      };
+      const p2 = {
+        x: 112 * Math.cos(this.endPos) * this.ratio + this.canvasWidth / 2,
+        y: 112 * Math.sin(this.endPos) * this.ratio + this.canvasHeight / 2,
+      };
+      context.moveTo(p0.x, p0.y);
+      context.arcTo(p1.x - 10, p1.y + 10, p2.x - 21, p2.y, 15);
+      context.lineTo(p2.x - 21, p2.y);
+      context.lineTo(p0.x - 40, p0.y - 20);
+
+      (p0.x = 112 * Math.cos(this.endPos) * this.ratio + this.canvasWidth / 2) -
+        40,
+        (p0.y =
+          112 * Math.sin(this.endPos) * this.ratio + this.canvasHeight / 2) -
+          20,
+        (p1.x =
+          112 * Math.cos(this.endPos) * this.ratio + this.canvasWidth / 2 - 10),
+        (p1.y =
+          112 * Math.sin(this.endPos) * this.ratio + this.canvasHeight / 2) +
+          10,
+        (p2.x =
+          112 * Math.cos(this.endPos) * this.ratio + this.canvasWidth / 2) - 21,
+        (p2.y =
+          112 * Math.sin(this.endPos) * this.ratio + this.canvasHeight / 2),
+        context.arcTo(p1.x - 42.5, p1.y - 30, p2.x - 42.5, p2.y - 42.5, 15);
+      context.lineTo(p2.x - 42.5, p2.y - 42.5);
+
+      context.stroke();
+      context.beginPath();
+      context.arc(
+        this.canvasWidth / 2,
+        this.canvasHeight / 2,
+        112 * this.ratio,
+        this.endPos,
+        this.startingPos,
+        true
+      );
+
+      (p0.x =
+        112 * Math.cos(this.startingPos) * this.ratio + this.canvasWidth / 2),
+        (p0.y =
+          112 * Math.sin(this.startingPos) * this.ratio +
+          this.canvasHeight / 2),
+        (p1.x =
+          112 * Math.cos(this.startingPos) * this.ratio + this.canvasWidth / 2),
+        (p1.y =
+          112 * Math.sin(this.startingPos) * this.ratio +
+          this.canvasHeight / 2),
+        (p2.x =
+          112 * Math.cos(this.startingPos) * this.ratio + this.canvasWidth / 2),
+        (p2.y =
+          112 * Math.sin(this.startingPos) * this.ratio +
+          this.canvasHeight / 2),
+        context.arcTo(p1.x + 10, p1.y + 10, p2.x + 21, p2.y, 15);
+
+      (p0.x =
+        112 * Math.cos(this.startingPos) * this.ratio + this.canvasWidth / 2) -
+        40,
+        (p0.y =
+          112 * Math.sin(this.startingPos) * this.ratio +
+          this.canvasHeight / 2) + 20,
+        (p1.x =
+          112 * Math.cos(this.startingPos) * this.ratio +
+          this.canvasWidth / 2 +
+          10),
+        (p1.y =
+          112 * Math.sin(this.startingPos) * this.ratio +
+          this.canvasHeight / 2) - 10,
+        (p2.x =
+          112 * Math.cos(this.startingPos) * this.ratio +
+          this.canvasWidth / 2) + 21,
+        (p2.y =
+          112 * Math.sin(this.startingPos) * this.ratio +
+          this.canvasHeight / 2),
+        context.arcTo(p1.x + 42.5, p1.y - 30, p2.x + 42.5, p2.y - 42.5, 15);
+      context.lineTo(p2.x + 42.5, p2.y - 42.5);
+      context.stroke();
+    },
+  },
   },
   mounted() {
     this.drawNumbers();
